@@ -6,12 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import kr.co.seoulit.erp.logistic.outsourcing.servicefacade.OutsourcServiceFacade;
 import kr.co.seoulit.erp.logistic.outsourcing.to.OutsourcTO;
 
@@ -25,20 +20,23 @@ public class OutsourcOrderController {
 
 	private ModelMap modelMap = new ModelMap();
 
-	@RequestMapping(value = "/searchOderableList", method = RequestMethod.GET)
-	public HashMap<String, Object> searchOderableList(@RequestParam String searchDateCondition,
-			@RequestParam String startDate, @RequestParam String endDate) {
+	@GetMapping(value = "searchOderableList")
+	public HashMap<String, Object> searchOderableList(
+			@RequestParam String startDate,
+			@RequestParam String endDate) {
 		HashMap<String, Object> resultMap = new HashMap<>();
-		try {
-			resultMap.put("gridRowJson", outsourcSF.searchMrpGatheringList(searchDateCondition, startDate, endDate));
-			resultMap.put("errorCode", 1);
-			resultMap.put("errorMsg", "성공");
-
-		} catch (Exception e) {
-			e.printStackTrace();
-			resultMap.put("errorCode", -2);
-			resultMap.put("errorMsg", e.getMessage());
-		}
+		System.out.println(startDate);
+		System.out.println(endDate);
+//		try {
+//			resultMap.put("gridRowJson", outsourcSF.searchMrpGatheringList(searchDateCondition, startDate, endDate));
+//			resultMap.put("errorCode", 1);
+//			resultMap.put("errorMsg", "성공");
+//
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//			resultMap.put("errorCode", -2);
+//			resultMap.put("errorMsg", e.getMessage());
+//		}
 		return resultMap;
 	}
 

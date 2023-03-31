@@ -118,8 +118,6 @@
                SLIP_DESCRIPTION as slipDescription,
                SLIP_STATUS as slipStatus
         FROM SLIP
-        WHERE SLIP_STATUS = '미승인'
-        OR APPROVAL_DATE IS NULL
         ]]>
    </select>
    

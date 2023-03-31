@@ -210,6 +210,27 @@ GROUP BY DEPT_NAME,	EMP_NAME,POSITION_NAME,EMP_CODE
       ORDER BY EMP_CODE
    </select>
 
+      <update id="updateEmp" parameterType="kr.co.seoulit.erp.hr.affair.to.EmpUpdateTO"
+      statementType="CALLABLE">
+      {CALL P_UPDATE_MAP(
+      #{empCode mode=IN jdbcType=VARCHAR 30},
+      #{empName},
+      #{gender mode=IN jdbcType=VARCHAR30},
+      #{birhtDate mode=IN jdbcType=VARCHAR 30},
+      #{deptCode mode=IN jdbcType=VARCHAR 30},
+      #{authorityCodeNumber mode=IN jdbcType=VARCHAR 30},
+      #{basicAddress mode=IN jdbcType=VARCHAR30},
+      #{email mode=IN jdbcType=VARCHAR30},
+      #{levelOfEducation mode=IN jdbcType=VARCHAR 30},
+      #{phoneNumber mode=IN jdbcType=VARCHAR 30},
+      #{positionCode mode=IN jdbcType=VARCHAR 30},
+      #{userId mode=IN jdbcType=VARCHAR 30},
+      #{workplaceCode mode=IN jdbcType=VARCHAR 30},
+      #{workplaceCode mode=IN jdbcType=VARCHAR 30},
+      #{zipCode mode=OUT jdbcType=VARCHAR},
+      #{errorMsg mode=OUT jdbcType=VARCHAR} ) }
+   </update>
+
    <update id="updateEmployee" parameterType="kr.co.seoulit.erp.hr.affair.to.EmployeeDetailTO"
       statementType="CALLABLE">
       {CALL P_EMPLOYEE_UPDATE( 

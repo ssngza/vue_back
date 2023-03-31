@@ -90,11 +90,7 @@
 	</resultMap>
 	
 	<select id="selectWorkOrderInfoList" resultMap="workOrderSimulationListA">
-select
-*
-from work_order_info
-where
-operation_completed is null
+		select * from work_order_info where operation_completed is null
 	</select>
 	
 	<parameterMap type="map" id="workOrderCompletionParam">
