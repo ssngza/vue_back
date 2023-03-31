@@ -16,29 +16,25 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
+@RequestMapping("/sys/*")
 @CrossOrigin(value = "*", exposedHeaders = { "Authorization" })
 public class MyLoginHandler {
 
 	@Autowired
 	BaseServiceFacade baseServiceFacade;
 
-	@PostMapping("/api/auth/login")
-	public Map<String, Object> login(@RequestBody Map<String, String> loginData, HttpServletResponse response)
+	@PostMapping("login")
+	public Map<String, Object> login(@RequestBody LoginTo loginData, HttpServletResponse response)
 			throws DataAccessException {
 		Map<String, Object> result = new HashMap<>();
-		LoginTo loginTo = new LoginTo();
 
-		loginTo.setCompanyCode(loginData.get("companyCode"));
-		loginTo.setWorkplaceCode(loginData.get("workplaceCode"));
-		loginTo.setEmpCode(loginData.get("empCode"));
-		loginTo.setPassword(loginData.get("password"));
 
 		try {
 
 			// response.addHeader("Authorization", baseServiceFacade.login(loginTo));
 
 			// 여기부터
-			EmpInfoTO empTo = baseServiceFacade.myLogin(loginTo);
+			EmpInfoTO empTo = baseServiceFacade.myLogin(loginData);
 //			
 //			if(empTo.getEmpCode()!=null) {
 //				response.addHeader("Authorization", "enter");
@@ -50,8 +46,8 @@ public class MyLoginHandler {
 
 //			result.put("empName", logi)
 
-			result.put("errorCode", loginTo.getErrorCode());
-			result.put("errorMsg", loginTo.getErrorMsg());
+			result.put("errorCode", loginData.getErrorCode());
+			result.put("errorMsg", loginData.getErrorMsg());
 
 		} catch (IdNotFoundException | PwMissMatchException e) {
 			result.put("errorCode", 1);

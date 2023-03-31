@@ -1,28 +1,21 @@
 package kr.co.seoulit.erp.hr.salary.controller;
 
+import kr.co.seoulit.erp.hr.salary.servicefacade.SalaryServiceFacade;
+import kr.co.seoulit.erp.hr.salary.to.MonthSalaryTO;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import kr.co.seoulit.erp.hr.salary.servicefacade.SalaryServiceFacade;
-import kr.co.seoulit.erp.hr.salary.to.MonthSalaryTO;
-
 @CrossOrigin("*")
 @RestController
 @RequestMapping(value = "/hr/salary/*", produces = "application/json")
-public class monthSalaryController {
+public class monthSalaryReportController {
 	
 	@Autowired
 	private SalaryServiceFacade salaryServiceFacade;
