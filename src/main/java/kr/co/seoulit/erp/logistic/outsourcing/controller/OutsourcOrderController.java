@@ -22,21 +22,28 @@ public class OutsourcOrderController {
 
 	@GetMapping(value = "searchOderableList")
 	public HashMap<String, Object> searchOderableList(
+			@RequestParam String searchDateCondition,
 			@RequestParam String startDate,
 			@RequestParam String endDate) {
 		HashMap<String, Object> resultMap = new HashMap<>();
+		System.out.println(searchDateCondition);
 		System.out.println(startDate);
 		System.out.println(endDate);
-//		try {
-//			resultMap.put("gridRowJson", outsourcSF.searchMrpGatheringList(searchDateCondition, startDate, endDate));
-//			resultMap.put("errorCode", 1);
-//			resultMap.put("errorMsg", "성공");
-//
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//			resultMap.put("errorCode", -2);
-//			resultMap.put("errorMsg", e.getMessage());
-//		}
+
+		try {
+			resultMap.put("gridRowJson", outsourcSF.searchMrpGatheringList(
+					searchDateCondition,
+					startDate,
+					endDate)
+			);
+			resultMap.put("errorCode", 1);
+			resultMap.put("errorMsg", "성공");
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			resultMap.put("errorCode", -2);
+			resultMap.put("errorMsg", e.getMessage());
+		}
 		return resultMap;
 	}
 

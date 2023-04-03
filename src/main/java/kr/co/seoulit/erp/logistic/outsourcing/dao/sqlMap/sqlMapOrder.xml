@@ -25,18 +25,19 @@
 	m.REQUEST_STATUS is null 
 	and m.OUTSOURC_STATUS is null
 	and
-	( 
-	CASE #{dateSearchCondtion} 
-	WHEN 'claimDate' THEN
-	TO_DATE(m.CLAIM_DATE, 'YYYY-MM-DD') 
-	WHEN 'dueDate' THEN
-	TO_DATE(m.DUE_DATE, 'YYYY-MM-DD') 
-	END 
+	(
+	CASE #{dateSearchCondtion}
+	WHEN 'CLAIM_DATE' THEN
+		m.CLAIM_DATE BETWEEN #{startDate} AND #{endDate}
+-- 	TO_DATE(m.CLAIM_DATE, 'YYYY-MM-DD')
+	WHEN 'DUE_DATE' THEN
+		m.DUE_DATE BETWEEN #{startDate} AND #{endDate}
+	END
 	)
-	BETWEEN 
-	TO_DATE(#{startDate},'YYYY-MM-DD') 
-	AND 
-	TO_DATE(#{endDate},'YYYY-MM-DD')
+-- 	BETWEEN
+-- 	TO_DATE(#{startDate},'YYYY-MM-DD')
+-- 	AND
+-- 	TO_DATE(#{endDate},'YYYY-MM-DD')
 and
 m.item_code in (select item_code from item i where i.ITEM_CLASSIFICATION='IT-SI')
 	</select>
