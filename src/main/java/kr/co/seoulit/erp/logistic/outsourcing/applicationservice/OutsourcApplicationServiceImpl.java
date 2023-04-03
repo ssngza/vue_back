@@ -26,13 +26,16 @@ public class OutsourcApplicationServiceImpl implements OutsourcApplicationServic
 	private OutInspectionDAO inspectionDAO;
 
 	@Override
-	public ArrayList<MrpGatheringTO> searchMrpGatheringList(String dateSearchCondtion, String startDate,
+	public ArrayList<MrpGatheringTO> searchMrpGatheringList(
+			String dateSearchCondtion,
+			String startDate,
 			String endDate) {
 
 		HashMap<String, String> param = new HashMap<>();
 		param.put("dateSearchCondtion", dateSearchCondtion);
 		param.put("startDate", startDate);
 		param.put("endDate", endDate);
+		System.out.println(param);
 
 		return orderDAO.selectMrpGatheringList(param);
 	}
