@@ -3,6 +3,7 @@ package kr.co.seoulit.erp.logistic.purchase.servicefacade;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import kr.co.seoulit.erp.logistic.purchase.dao.StockDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -27,9 +28,12 @@ public class PurchaseServiceFacadeImpl implements PurchaseServiceFacade {
 	@Autowired
 	private StockApplicationService stockAS;
 
+	@Autowired
+	private StockDAO stockDAO;
+
 	@Override
 	public ArrayList<BomDeployTO> getBomDeployList(String deployCondition, String itemCode,
-			String itemClassificationCondition) {
+												   String itemClassificationCondition) {
 
 		return bomAS.getBomDeployList(deployCondition, itemCode, itemClassificationCondition);
 	}
@@ -92,6 +96,18 @@ public class PurchaseServiceFacadeImpl implements PurchaseServiceFacade {
 
 		return stockAS.getStockList();
 
+	}
+
+	@Override
+	public ArrayList<StockTO> getWarehouseStockList(String warehouseCode) {
+		System.out.println("서비스임플까지");
+		System.out.println(warehouseCode);
+		ArrayList<StockTO> stockList = null;
+
+		stockList = stockDAO.selectWarehouseStockList(warehouseCode);
+		System.out.println(warehouseCode);
+
+		return stockList;
 	}
 
 	@Override

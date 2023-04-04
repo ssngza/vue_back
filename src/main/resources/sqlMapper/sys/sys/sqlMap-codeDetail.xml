@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="kr.co.seoulit.erp.sys.dao.SysCodeDetailDao">
+<mapper namespace="kr.co.seoulit.erp.sys.dao.CodeDetailDao">
 <!--    <select id="selectCodeDetailList" resultType="CodeDetailTo"-->
 <!--            parameterType="String">-->
 <!--        SELECT DIVISION_CODE_NO as divisionCodeNo-->
