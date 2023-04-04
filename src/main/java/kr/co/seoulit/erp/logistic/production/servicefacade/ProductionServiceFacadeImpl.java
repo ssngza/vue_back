@@ -36,14 +36,14 @@ public class ProductionServiceFacadeImpl implements ProductionServiceFacade {
 
 	@Override
 	public ArrayList<ContractDetailInMpsAvailableTO> getContractDetailListInMpsAvailable(String searchCondition,
-			String startDate, String endDate) {
+																						 String startDate, String endDate) {
 
 		return mpsAS.getContractDetailListInMpsAvailable(searchCondition, startDate, endDate);
 	}
 
 	@Override
 	public ArrayList<SalesPlanInMpsAvailableTO> getSalesPlanListInMpsAvailable(String searchCondition, String startDate,
-			String endDate) {
+																			   String endDate) {
 
 		return mpsAS.getSalesPlanListInMpsAvailable(searchCondition, startDate, endDate);
 
@@ -93,7 +93,7 @@ public class ProductionServiceFacadeImpl implements ProductionServiceFacade {
 
 	@Override
 	public ArrayList<MrpGatheringTO> searchMrpGatheringList(String dateSearchCondtion, String startDate,
-			String endDate) {
+															String endDate) {
 
 		return mrpAS.searchMrpGatheringList(dateSearchCondtion, startDate, endDate);
 	}
@@ -124,7 +124,7 @@ public class ProductionServiceFacadeImpl implements ProductionServiceFacade {
 
 	@Override
 	public HashMap<String, Object> registerMrpGathering(String mrpGatheringRegisterDate,
-			ArrayList<MrpGatheringTO> newMrpGatheringList, HashMap<String, String> mrpNoAndItemCodeMap) {
+														ArrayList<MrpGatheringTO> newMrpGatheringList, HashMap<String, String> mrpNoAndItemCodeMap) {
 
 		return mrpAS.registerMrpGathering(mrpGatheringRegisterDate, newMrpGatheringList, mrpNoAndItemCodeMap);
 
@@ -138,9 +138,9 @@ public class ProductionServiceFacadeImpl implements ProductionServiceFacade {
 	}
 
 	@Override
-	public HashMap<String, Object> getWorkOrderSimulationList(String mrpNo) {
+	public HashMap<String, Object> getWorkOrderSimulationList(String mrpNo,String mrpGatheringNo) {
 
-		return workOrderAS.getWorkOrderSimulationList(mrpNo);
+		return workOrderAS.getWorkOrderSimulationList(mrpNo,mrpGatheringNo);
 
 	}
 
@@ -174,7 +174,7 @@ public class ProductionServiceFacadeImpl implements ProductionServiceFacade {
 
 	@Override
 	public HashMap<String, Object> showWorkSiteSituation(String workSiteCourse, String workOrderNo,
-			String itemClassIfication) {
+														 String itemClassIfication) {
 
 		return workOrderAS.showWorkSiteSituation(workSiteCourse, workOrderNo, itemClassIfication);
 

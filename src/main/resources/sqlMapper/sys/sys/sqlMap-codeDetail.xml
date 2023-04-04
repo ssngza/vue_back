@@ -31,7 +31,7 @@
                CODE_USE_CHECK   as codeUseCheck,
                DESCRIPTION      as description
         FROM CODE_DETAIL
-        WHERE DIVISION_CODE_NO = #{divisionCode}
+        WHERE DIVISION_CODE_NO = #{itemClassificationCondition}
         ORDER BY DIVISION_CODE_NO, DETAIL_CODE
     </select>
 

@@ -70,9 +70,10 @@ public class OutsourcOrderController {
 		return modelMap;
 	}
 
-	@RequestMapping(value = "/insertOutsourc", method = RequestMethod.POST) // mps등록
+	@PostMapping("insertOutsourc") // mps등록
 	public ModelMap insertOutsourc(@RequestBody ArrayList<OutsourcTO> OutsourcList) {
 
+		System.out.println("여기니");
 		System.out.println(OutsourcList);
 
 		outsourcSF.insertOutsourc(OutsourcList);

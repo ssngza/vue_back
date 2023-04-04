@@ -40,12 +40,21 @@ public class WorkOrderApplicationServiceImpl implements WorkOrderApplicationServ
 	}
 
 	@Override
-	public HashMap<String, Object> getWorkOrderSimulationList(String mrpNo) {
+	public HashMap<String, Object> getWorkOrderSimulationList(String mrpNo,String mrpGatheringNo) {
 
 		HashMap<String, Object> param = new HashMap<>();
+		param.put("mrpGatheringNo", mrpGatheringNo);
 		param.put("mrpNo", mrpNo);
 
 		workOrderDAO.getWorkOrderSimulationList(param);
+
+		System.out.println("모의전개 파람쓰: "+param);
+
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("result",param.get("result"));
+		map.put("errorCode",param.get("ERROR_CODE"));
+		map.put("errorMsg",param.get("ERROR_MSG"));
+		System.out.println("모의전개: "+map);
 
 		return param;
 

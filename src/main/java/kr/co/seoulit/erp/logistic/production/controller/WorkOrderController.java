@@ -8,10 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import kr.co.seoulit.erp.logistic.production.servicefacade.ProductionServiceFacade;
 import kr.co.seoulit.erp.logistic.production.to.ProductionPerformanceInfoTO;
@@ -47,14 +44,16 @@ public class WorkOrderController {
 	}
 
 	@RequestMapping("/showWorkOrderDialog")
-	public HashMap<String, Object> showWorkOrderDialog(HttpServletRequest request, HttpServletResponse response) {
+	public HashMap<String, Object> showWorkOrderDialog(@RequestParam String mrpNo,@RequestParam String mrpGatheringNo) {
 
-		String mrpGatheringNo = request.getParameter("mrpGatheringNo");
+
 
 		HashMap<String, Object> resultMap = new HashMap<>();
 
+		System.out.println("넘어오니???? 가더노 :"+mrpGatheringNo+"엠알피노: "+mrpNo);
+
 		try {
-			resultMap = productionSF.getWorkOrderSimulationList(mrpGatheringNo);
+			resultMap = productionSF.getWorkOrderSimulationList(mrpNo,mrpGatheringNo);
 
 		} catch (Exception e2) {
 			e2.printStackTrace();
@@ -97,7 +96,7 @@ public class WorkOrderController {
 
 			modelMap.put("gridRowJson", workOrderInfoList);
 			modelMap.put("errorCode", 1);
-			modelMap.put("errorMsg", "�꽦怨�");
+			modelMap.put("errorMsg", " 꽦怨 ");
 
 		} catch (Exception e2) {
 			e2.printStackTrace();
@@ -139,7 +138,7 @@ public class WorkOrderController {
 
 			modelMap.put("gridRowJson", productionPerformanceInfoList);
 			modelMap.put("errorCode", 1);
-			modelMap.put("errorMsg", "�꽦怨�");
+			modelMap.put("errorMsg", " 꽦怨 ");
 
 		} catch (Exception e2) {
 			e2.printStackTrace();
@@ -182,11 +181,11 @@ public class WorkOrderController {
 	@RequestMapping("/workCompletion")
 	public ModelMap workCompletion(@RequestBody HashMap<String, ArrayList<WorkSiteSimulationTO>> workOrderInfo) {
 
-//		ArrayList<String> itemCodeListArr = gson.fromJson(itemCodeList,
-//				new TypeToken<ArrayList<String>>() {}.getType());
+//      ArrayList<String> itemCodeListArr = gson.fromJson(itemCodeList,
+//            new TypeToken<ArrayList<String>>() {}.getType());
 		System.out.println("@@@@" + workOrderInfo);
-//		System.out.println(workOrderNo);
-//		System.out.println(itemCode);s
+//      System.out.println(workOrderNo);
+//      System.out.println(itemCode);s
 		try {
 
 			productionSF.workCompletion(workOrderInfo);

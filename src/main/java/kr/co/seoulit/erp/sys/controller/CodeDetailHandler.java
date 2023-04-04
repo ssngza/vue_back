@@ -23,9 +23,9 @@ public class CodeDetailHandler {
 	}
 
 	@RequestMapping("/findPayStepCodeDetailList")
-	public List<SysCodeDetailTo> findPayStepCodeDetailList(@RequestParam String divisionCode) throws Exception {
-		System.out.println("divisionCode:" + divisionCode);
-		return baseServiceFacade.findPayStepCodeDetailList(divisionCode);
+	public List<SysCodeDetailTo> findPayStepCodeDetailList(@RequestParam String itemClassificationCondition) throws Exception {
+		System.out.println("divisionCode:" + itemClassificationCondition);
+		return baseServiceFacade.findPayStepCodeDetailList(itemClassificationCondition);
 
 	}
 

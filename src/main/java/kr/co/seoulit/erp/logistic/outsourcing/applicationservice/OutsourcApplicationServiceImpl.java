@@ -49,7 +49,6 @@ public class OutsourcApplicationServiceImpl implements OutsourcApplicationServic
 	public void insertOutsourc(ArrayList<OutsourcTO> outsourcList) {
 
 		orderDAO.insertOutsourc(outsourcList);
-		// orderDAO.updateMrpGathering(outsourcList);
 
 		ArrayList<String> mrpGatheringNoList = new ArrayList<String>();
 
@@ -59,6 +58,7 @@ public class OutsourcApplicationServiceImpl implements OutsourcApplicationServic
 
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		String mrpGatheringNoStr = mrpGatheringNoList.toString().replace("[", "").replace("]", "");
+		System.out.println(mrpGatheringNoStr);
 		map.put("mrpGatheringNoList", mrpGatheringNoStr.toString());
 		orderDAO.updateNecessaryAmount(map);
 	}

@@ -9,7 +9,7 @@ import java.util.List;
 public interface CodeDetailDao {
 
 	public List<SysCodeDetailTo> selectAllCodeDetailList();
-	public List<SysCodeDetailTo> selectPayStepCodeDetailList(String divisionCode);
+	public List<SysCodeDetailTo> selectPayStepCodeDetailList(String itemClassificationCondition);
 
 	public void insertDetailCode(SysCodeDetailTo codeDetailTo);
 
