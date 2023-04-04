@@ -17,10 +17,10 @@ public interface ProductionServiceFacade {
 	public ArrayList<MpsTO> getMpsList(String startDate, String endDate, String includeMrpApply);
 
 	public ArrayList<ContractDetailInMpsAvailableTO> getContractDetailListInMpsAvailable(String searchCondition,
-			String startDate, String endDate);
+																						 String startDate, String endDate);
 
 	public ArrayList<SalesPlanInMpsAvailableTO> getSalesPlanListInMpsAvailable(String searchCondition, String startDate,
-			String endDate);
+																			   String endDate);
 
 	public HashMap<String, Object> convertContractDetailToMps(
 			ContractDetailInMpsAvailableTO contractDetailInMpsAvailableTO);
@@ -37,7 +37,7 @@ public interface ProductionServiceFacade {
 	public ArrayList<MrpTO> searchMrpListAsMrpGatheringNo(String mrpGatheringNo);
 
 	public ArrayList<MrpGatheringTO> searchMrpGatheringList(String dateSearchCondtion, String startDate,
-			String endDate);
+															String endDate);
 
 	public HashMap<String, Object> openMrp(ArrayList<String> mpsNoArr);
 
@@ -48,11 +48,11 @@ public interface ProductionServiceFacade {
 	public ArrayList<MrpGatheringTO> getMrpGathering(String mrpNoArr);
 
 	public HashMap<String, Object> registerMrpGathering(String mrpGatheringRegisterDate,
-			ArrayList<MrpGatheringTO> newMrpGatheringList, HashMap<String, String> mrpNoAndItemCodeMap);
+														ArrayList<MrpGatheringTO> newMrpGatheringList, HashMap<String, String> mrpNoAndItemCodeMap);
 
 	public HashMap<String, Object> getWorkOrderableMrpList();
 
-	public HashMap<String, Object> getWorkOrderSimulationList(String mrpNo);
+	public HashMap<String, Object> getWorkOrderSimulationList(String mrpNo,String mrpGatheringNo);
 
 	public HashMap<String, Object> workOrder(String mrpGatheringNo, String workPlaceCode, String productionProcess);
 
@@ -63,7 +63,7 @@ public interface ProductionServiceFacade {
 	public ArrayList<ProductionPerformanceInfoTO> getProductionPerformanceInfoList();
 
 	public HashMap<String, Object> showWorkSiteSituation(String workSiteCourse, String workOrderNo,
-			String itemClassIfication);
+														 String itemClassIfication);
 
 	public void workCompletion(HashMap<String, ArrayList<WorkSiteSimulationTO>> workOrderInfo);
 

@@ -81,9 +81,9 @@ public class BaseServiceFacadeImpl implements BaseServiceFacade {
 	}
 
 	@Override
-	public List<SysCodeDetailTo> findPayStepCodeDetailList(String divisionCode) {
+	public List<SysCodeDetailTo> findPayStepCodeDetailList(String itemClassificationCondition) {
 		// TODO Auto-generated method stub
-		return codeDetailDao.selectPayStepCodeDetailList(divisionCode);
+		return codeDetailDao.selectPayStepCodeDetailList(itemClassificationCondition);
 	}
 
 	@Override

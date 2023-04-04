@@ -11,7 +11,7 @@ public interface WorkOrderApplicationService {
 
 	public HashMap<String, Object> getWorkOrderableMrpList();
 
-	public HashMap<String, Object> getWorkOrderSimulationList(String mrpNo);
+	public HashMap<String, Object> getWorkOrderSimulationList(String mrpNo,String mrpGatheringNo);
 
 	public HashMap<String, Object> workOrder(String mrpGatheringNo, String workPlaceCode, String productionProcess);
 
@@ -22,7 +22,7 @@ public interface WorkOrderApplicationService {
 	public HashMap<String, Object> workOrderCompletion(String workOrderNo, String actualCompletionAmount);
 
 	public HashMap<String, Object> showWorkSiteSituation(String workSiteCourse, String workOrderNo,
-			String itemClassIfication);
+														 String itemClassIfication);
 
 	public void workCompletion(HashMap<String, ArrayList<WorkSiteSimulationTO>> workOrderInfo);
 

@@ -18,7 +18,7 @@ public interface BaseServiceFacade {
 	
 	List<SysCodeTo> findCodeList();
 	List<SysCodeDetailTo> findCodeDetailList();
-	List<SysCodeDetailTo> findPayStepCodeDetailList(String divisionCode);
+	List<SysCodeDetailTo> findPayStepCodeDetailList(String itemClassificationCondition);
 	
 	List<AuthorityTo> findAuthorityList();
 	
