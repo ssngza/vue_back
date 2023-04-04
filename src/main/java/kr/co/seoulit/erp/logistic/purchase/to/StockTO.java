@@ -14,5 +14,6 @@ public class StockTO {
 	private String orderAmount;
 	private String inputAmount;
 	private String deliveryAmount;
+	private String totalStockAmount;
 
 }

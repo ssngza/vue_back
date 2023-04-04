@@ -11,6 +11,9 @@ import kr.co.seoulit.erp.logistic.purchase.to.StockTO;
 @Mapper
 public interface StockDAO {
 
+	public ArrayList<StockTO> selectWarehouseStockList(String warehouseCode);
+
+
 	public ArrayList<StockTO> selectStockList();
 
 	public HashMap<String, Object> warehousing(HashMap<String, Object> resultMap);

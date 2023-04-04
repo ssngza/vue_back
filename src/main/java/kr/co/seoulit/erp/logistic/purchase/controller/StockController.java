@@ -7,6 +7,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import kr.co.seoulit.erp.logistic.purchase.dao.StockDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -100,5 +101,29 @@ public class StockController {
 		purchaseSF.inspection(params.get("sendData").toString());
 
 	}
+
+	//230403 추가
+	@RequestMapping(value="/warehouseStockList" , method=RequestMethod.GET)
+	public ModelMap searchWarehouseStockList(@RequestParam String warehouseCode) {
+//      String warehouseCode  = request.getParameter("warehouseCode");
+		modelMap = new ModelMap();
+		System.out.println("warehouseCode:::");
+		System.out.println(warehouseCode);
+
+		try {
+			ArrayList<StockTO> stockList = purchaseSF.getWarehouseStockList(warehouseCode);
+			System.out.println("stockList:::"+stockList);
+
+			modelMap.put("gridRowJson", stockList);
+			modelMap.put("errorCode", 1);
+			modelMap.put("errorMsg", "성공");
+		} catch (Exception e1) {
+			e1.printStackTrace();
+			modelMap.put("errorCode", -1);
+			modelMap.put("errorMsg", e1.getMessage());
+		}
+		return modelMap;
+	}
+
 
 }

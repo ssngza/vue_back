@@ -28,9 +28,7 @@
         <if test='dateSearchCondtion=="DUE_DATE"'>
             AND m.DUE_DATE BETWEEN #{startDate} AND #{endDate}
         </if>
-
           and m.item_code in (select item_code from item i where i.ITEM_CLASSIFICATION = 'IT-SI')
-
     </select>
 
     <select id="getStandardUnitPrice" parameterType="String" resultType="int">

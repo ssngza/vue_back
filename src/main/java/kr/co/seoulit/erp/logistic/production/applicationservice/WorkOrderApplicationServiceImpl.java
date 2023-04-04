@@ -24,7 +24,16 @@ public class WorkOrderApplicationServiceImpl implements WorkOrderApplicationServ
 	public HashMap<String, Object> getWorkOrderableMrpList() {
 		HashMap<String, Object> result = new HashMap<>();
 
-		workOrderDAO.getWorkOrderableMrpList(result);
+		HashMap<String, Object> map = new HashMap<>();
+
+		workOrderDAO.getWorkOrderableMrpList(map);
+
+		result.put("gridRowJson", map.get("result"));
+		result.put("errorCode", map.get("errorCode"));
+		result.put("errorMsg", map.get("errorMsg"));
+
+		System.out.println("데이터확인용");
+		System.out.println(result);
 
 		return result;
 
@@ -84,7 +93,7 @@ public class WorkOrderApplicationServiceImpl implements WorkOrderApplicationServ
 
 	@Override
 	public HashMap<String, Object> showWorkSiteSituation(String workSiteCourse, String workOrderNo,
-			String itemClassIfication) {
+														 String itemClassIfication) {
 
 		HashMap<String, Object> param = new HashMap<>();
 		param.put("workSiteCourse", workSiteCourse);
@@ -101,7 +110,7 @@ public class WorkOrderApplicationServiceImpl implements WorkOrderApplicationServ
 
 		ArrayList<WorkSiteSimulationTO> test = workOrderInfo.get("workOrderInfo");
 		StringBuilder sb = new StringBuilder();
-//	         List<TotalTrialBalanceBean> test=(List<TotalTrialBalanceBean>) param.get("RESULT");
+//            List<TotalTrialBalanceBean> test=(List<TotalTrialBalanceBean>) param.get("RESULT");
 		int aa = 0;
 		String workOrderNo = "";
 		String parentItemCode = "";
@@ -119,7 +128,7 @@ public class WorkOrderApplicationServiceImpl implements WorkOrderApplicationServ
 		System.out.println(parentItemCode);
 		System.out.println("리스트테스트" + test22);
 		System.out.println("리스트테스트111" + itemCode);
-//				String itemCodeList=itemCodeListArr.toString().replace("[", "").replace("]", "");
+//            String itemCodeList=itemCodeListArr.toString().replace("[", "").replace("]", "");
 		HashMap<String, Object> param = new HashMap<>();
 		param.put("workOrderNo", workOrderNo);
 		param.put("itemCode", parentItemCode);
