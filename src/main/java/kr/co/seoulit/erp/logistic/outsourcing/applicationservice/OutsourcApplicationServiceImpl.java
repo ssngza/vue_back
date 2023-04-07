@@ -3,6 +3,7 @@ package kr.co.seoulit.erp.logistic.outsourcing.applicationservice;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import kr.co.seoulit.erp.logistic.production.to.MrpGatheringTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -11,7 +12,6 @@ import kr.co.seoulit.erp.logistic.outsourcing.dao.OutInspectionDAO;
 import kr.co.seoulit.erp.logistic.outsourcing.dao.OutsourcOrderDAO;
 import kr.co.seoulit.erp.logistic.outsourcing.to.OutInspectionTO;
 import kr.co.seoulit.erp.logistic.outsourcing.to.OutsourcTO;
-import kr.co.seoulit.erp.logistic.production.to.MrpGatheringTO;
 
 @Component
 public class OutsourcApplicationServiceImpl implements OutsourcApplicationService {
@@ -38,6 +38,7 @@ public class OutsourcApplicationServiceImpl implements OutsourcApplicationServic
 		System.out.println(param);
 
 		return orderDAO.selectMrpGatheringList(param);
+		//return orderDAO.selectOutsourcInfoList(param);
 	}
 
 	@Override
@@ -64,13 +65,13 @@ public class OutsourcApplicationServiceImpl implements OutsourcApplicationServic
 	}
 
 	@Override
-	public ArrayList<OutsourcTO> searchOutsourcInfoList(String searchDateCondition, String startDate, String endDate) {
+	public ArrayList<OutsourcTO> searchOutsourcInfoList(String dateSearchCondtion, String startDate, String endDate) {
 		HashMap<String, String> param = new HashMap<>();
-		param.put("dateSearchCondtion", searchDateCondition);
+		param.put("dateSearchCondtion", dateSearchCondtion);
 		param.put("startDate", startDate);
 		param.put("endDate", endDate);
 
-		return orderDAO.selectOutsourcList(param);
+		return orderDAO.selectOutsourcInfoList(param);
 	}
 
 	@Override
@@ -125,11 +126,13 @@ public class OutsourcApplicationServiceImpl implements OutsourcApplicationServic
 	}
 
 	@Override
-	public HashMap<String, Object> outInspectionCompletion(String outsourcNo, String actualCompletionAmount) {
+	public HashMap<String, Object> outInspectionCompletion(String outsourcNo
+//			, String actualCompletionAmount
+	) {
 
 		HashMap<String, Object> param = new HashMap<>();
 		param.put("outsourcNo", outsourcNo);
-		param.put("actualCompletionAmount", actualCompletionAmount);
+//		param.put("actualCompletionAmount", actualCompletionAmount);
 
 		inspectionDAO.outInspectionCompletion(param);
 
@@ -144,7 +147,7 @@ public class OutsourcApplicationServiceImpl implements OutsourcApplicationServic
 		param.put("startDate", startDate);
 		param.put("endDate", endDate);
 
-		return forwardDAO.searchForwardableList(param);
+		return forwardDAO.searchForwardInfoList(param);
 	}
 
 	@Override
@@ -157,5 +160,19 @@ public class OutsourcApplicationServiceImpl implements OutsourcApplicationServic
 		forwardDAO.deleteTemp(param);
 
 	}
+
+	@Override
+	public ArrayList<OutsourcTO> searchOutsourcInfoList() {
+		return orderDAO.selectOutsourcInfoList();
+	}
+
+		@Override
+		public void updateForwardStatus (String outsourcNo){
+			HashMap<String, String> param = new HashMap<>();
+			param.put("outsourcNo", outsourcNo);
+
+			orderDAO.updateForwardStatus(param);
+		}
+
 
 }

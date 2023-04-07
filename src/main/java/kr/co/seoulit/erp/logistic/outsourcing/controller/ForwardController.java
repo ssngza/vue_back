@@ -8,10 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import kr.co.seoulit.erp.logistic.outsourcing.servicefacade.OutsourcServiceFacade;
 import kr.co.seoulit.erp.logistic.outsourcing.to.OutsourcTO;
@@ -65,8 +62,16 @@ public class ForwardController {
 		return modelMap;
 	}
 
+	@PostMapping("/updateForwardStatus")
+	public void updateForwardStatus(@RequestBody OutsourcTO outsourcTO) {
+
+		System.out.println(outsourcTO);
+		outsourcSF.updateForwardStatus(outsourcTO.getOutsourcNo());
+
+	}
+
 	
-	@RequestMapping("/searchForwardableList")
+	@GetMapping("/searchForwardableList")
 	public ModelMap searchForwardableList(HttpServletRequest request, HttpServletResponse response) {
 	
 		ArrayList<OutsourcTO> searchForwardableList = null;

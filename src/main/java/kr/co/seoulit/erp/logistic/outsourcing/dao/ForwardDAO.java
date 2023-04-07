@@ -18,11 +18,14 @@ public void updateStatus(String mrpGatheringNo);
 
 public ArrayList<OutsourcTO> selectForwardableList();
 
-public ArrayList<OutsourcTO> searchForwardableList(HashMap<String, String> param);
+public ArrayList<OutsourcTO> searchForwardableList();
 
 public void deleteTemp(HashMap<String, String> map);
 
 public ArrayList<OutsourcTO> selectForwardStatus(String mrpGatheringNo);
 
+    public ArrayList<OutsourcTO> searchForwardInfoList(HashMap<String, String> param);
+
+    public ArrayList<OutsourcTO> searchForwardInfoList2();
 }
 	

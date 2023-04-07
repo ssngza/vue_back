@@ -16,6 +16,19 @@
         <result property="outsourcStatus" column="OUTSOURC_STATUS"/>
     </resultMap>
 
+    <select id="selectOutsourcInfoList" parameterType="map" resultType="kr.co.seoulit.erp.logistic.outsourcing.to.OutsourcTO">
+        SELECT *
+        FROM  OUTSOURC_INFO o
+        WHERE o.FORWARD_STATUS is null
+                <if test='dateSearchCondtion=="CLAIM_DATE"'>
+                    AND o.CLAIM_DATE BETWEEN #{startDate} AND #{endDate}
+                </if>
+                <if test='dateSearchCondtion=="DUE_DATE"'>
+                    AND o.DUE_DATE BETWEEN #{startDate} AND #{endDate}
+                </if>
+    </select>
+
+
     <select id="selectMrpGatheringList" parameterType="map" resultMap="mrpGatheringList">
         SELECT *
         FROM MRP_GATHERING m
@@ -105,8 +118,17 @@
         <result property="forwardStatus" column="FORWARD_STATUS"/>
     </resultMap>
 
-    <select id="selectOutsourcList" parameterType="map" resultMap="OutsourcInfoList">
+    <select id="selectOutsourcList" parameterType="map" resultType="kr.co.seoulit.erp.logistic.outsourcing.to.OutsourcTO">
         SELECT *
+        FROM  OUTSOURC_INFO o
+        WHERE o.FORWARD_STATUS is null
+<!--        <if test='dateSearchCondtion=="CLAIM_DATE"'>-->
+<!--            AND o.CLAIM_DATE BETWEEN #{startDate} AND #{endDate}-->
+<!--        </if>-->
+<!--        <if test='dateSearchCondtion=="DUE_DATE"'>-->
+<!--            AND o.DUE_DATE BETWEEN #{startDate} AND #{endDate}-->
+<!--        </if>-->
+/*        SELECT *
         FROM OUTSOURC_INFO o
         WHERE (
             CASE #{dateSearchCondtion}
@@ -120,7 +142,7 @@
             TO_DATE(#{startDate}, 'YYYY-MM-DD')
             AND
             TO_DATE(#{endDate}, 'YYYY-MM-DD')
-          AND o.FORWARD_STATUS is null
+          AND o.FORWARD_STATUS is null*/
     </select>
 
 
@@ -135,4 +157,14 @@
         {call P_INSERT_OUTSOURC_INFO(?, ?, ?) }
         ]]>
 	</select>
+    <parameterMap type="map" id="params">
+        <parameter property="outsourcNo" mode="IN" javaType="java.lang.String" jdbcType="VARCHAR"/>
+
+    </parameterMap>
+    <select id="updateForwardStatus" parameterMap="params" >
+				<![CDATA[
+        {call P_OUTSOURCE_FOWARD(?) }
+        ]]>
+	</select>
+
 </mapper>

@@ -33,6 +33,8 @@ public class WarehouseController {
 
 		try {
 			ArrayList<WarehouseTO> WarehouseTOList = logisticsSF.getWarehouseInfoList();
+			System.out.println(WarehouseTOList);
+
 			modelMap.put("gridRowJson", WarehouseTOList);
 			modelMap.put("errorCode", 1);
 			modelMap.put("errorMsg", "성공");
@@ -45,14 +47,17 @@ public class WarehouseController {
 	}
 
 	@RequestMapping(value = "/warehousebatchListProcess", method = RequestMethod.POST)
-	public ModelMap warehousebatchListProcess(@RequestBody Map<String, ArrayList<WarehouseTO>> batchList) {
+//   public ModelMap warehousebatchListProcess(@RequestBody Map<String, ArrayList<WarehouseTO>> batchList) {
+	public ModelMap warehousebatchListProcess(@RequestBody ArrayList<WarehouseTO> batchList) {
 
 		System.out.println("@@@@@@@@@@@warehouseBatch");
-		ArrayList<WarehouseTO> warehouseList = batchList.get("warehouseInfo");
+		System.out.println(batchList);
+
+//      ArrayList<WarehouseTO> warehouseList = batchList.get("warehouseInfo");
 		HashMap<String, Object> resultMap = null;
 
 		try {
-			resultMap = logisticsSF.batchWarehouseInfoProcess(warehouseList);
+			resultMap = logisticsSF.batchWarehouseInfoProcess(batchList);
 			modelMap.put("result", resultMap);
 			modelMap.put("errorCode", 1);
 			modelMap.put("errorMsg", "성공");

@@ -65,9 +65,13 @@ public class OutsourcServiceFacadeImpl implements OutsourcServiceFacade{
 		
 }
 	@Override
-	public HashMap<String,Object> outInspectionCompletion(String outsourcNo,String actualCompletionAmount) {
+	public HashMap<String,Object> outInspectionCompletion(String outsourcNo
+//			,String actualCompletionAmount
+	) {
 
-    	return outsourcAS.outInspectionCompletion(outsourcNo,actualCompletionAmount);
+    	return outsourcAS.outInspectionCompletion(outsourcNo
+//				,actualCompletionAmount
+		);
 		
 	}
 
@@ -83,5 +87,15 @@ public class OutsourcServiceFacadeImpl implements OutsourcServiceFacade{
 		
 	}
 
-	
+	@Override
+	public ArrayList<OutsourcTO> searchOutsourcInfoList() {
+		return outsourcAS.searchOutsourcInfoList();
+	}
+
+	@Override
+	public void updateForwardStatus(String outsourcNo) {
+		outsourcAS.updateForwardStatus(outsourcNo);
+	}
+
+
 }

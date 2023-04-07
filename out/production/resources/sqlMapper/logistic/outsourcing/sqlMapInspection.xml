@@ -34,13 +34,13 @@
 	
 	<parameterMap type="map" id="outInspectionCompletionParam">
 		<parameter property="outsourcNo" mode="IN"/>
-		<parameter property="actualCompletionAmount" mode="IN"/>
+<!--		<parameter property="actualCompletionAmount" mode="IN"/>-->
 		<parameter property="errorCode" mode="OUT" javaType="java.lang.Integer" jdbcType="DECIMAL"/>
 		<parameter property="errorMsg" mode="OUT" javaType="java.lang.String" jdbcType="VARCHAR"/>
 	</parameterMap>
 	
 	<select id="outInspectionCompletion" parameterMap="outInspectionCompletionParam" statementType="CALLABLE">
-	{call P_OUTSOURC_COMPLETION(?,?,?,?)}
+	{call P_OUTSOURC_COMPLETION(?,?,?)}
 	</select>
 	
 	

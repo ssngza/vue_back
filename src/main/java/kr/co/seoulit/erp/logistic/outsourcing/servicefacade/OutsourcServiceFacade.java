@@ -26,10 +26,15 @@ public interface OutsourcServiceFacade {
 	
 	public ArrayList<OutInspectionTO> getOutInspectionInfoList();
 	
-	public HashMap<String,Object> outInspectionCompletion(String outsourcNo,String actualCompletionAmount);
+	public HashMap<String,Object> outInspectionCompletion(String outsourcNo
+//			,String actualCompletionAmount
+	);
 
 	public ArrayList<OutsourcTO> searchForwardableList(String searchDateCondition, String startDate, String endDate);
 
 	public void forwardTempDelete(String id, String seq);
 
+	public ArrayList<OutsourcTO> searchOutsourcInfoList();
+
+	public void updateForwardStatus(String outsourcNo);
 }

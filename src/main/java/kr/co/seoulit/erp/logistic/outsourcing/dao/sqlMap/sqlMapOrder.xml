@@ -41,6 +41,13 @@
 and
 m.item_code in (select item_code from item i where i.ITEM_CLASSIFICATION='IT-SI')
 	</select>
+
+	<select id="selectOutsourcInfoList"  resultType="kr.co.seoulit.erp.logistic.outsourcing.to.OutsourcTO">
+		select
+			*
+		from OUTSOURC_INFO
+
+	</select>
 	
 		<select id="getStandardUnitPrice" parameterType="String" resultType="int">
 select
@@ -118,7 +125,10 @@ OUTSOURC_NO
 	</resultMap>
 	
 	<select id="selectOutsourcList" parameterType="map" resultMap="OutsourcInfoList">
-	SELECT 
+		select
+			*
+		from OUTSOURC_INFO
+/*	SELECT
 	* 
 	FROM 
 	OUTSOURC_INFO o
@@ -135,7 +145,7 @@ OUTSOURC_NO
 	TO_DATE(#{startDate},'YYYY-MM-DD') 
 	AND 
 	TO_DATE(#{endDate},'YYYY-MM-DD')
-	AND o.FORWARD_STATUS is null
+	AND o.FORWARD_STATUS is null*/
 	</select>
 	
 	

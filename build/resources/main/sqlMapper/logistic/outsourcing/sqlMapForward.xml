@@ -72,8 +72,10 @@
 		<result property="completionStatus" column="COMPLETION_STATUS"  />
 	</resultMap>
 	
-	<select id="searchForwardableList" parameterType="map" resultMap="forwardableList">
-	SELECT 
+	<select id="searchForwardableList"  resultMap="forwardableList">
+		SELECT *
+		FROM  OUTSOURC_INFO
+/*	SELECT
 	* 
 	FROM 
 	OUTSOURC_INFO
@@ -91,7 +93,7 @@
 	BETWEEN 
 	TO_DATE(#{startDate},'YYYY-MM-DD') 
 	AND 
-	TO_DATE(#{endDate},'YYYY-MM-DD')
+	TO_DATE(#{endDate},'YYYY-MM-DD')*/
 	</select>
 	
 	<delete id="deleteTemp" parameterType = "map">
@@ -112,5 +114,23 @@
     =
     #{mrp_gathering_no}
 	</select>
-		
+
+	<select id = "searchForwardInfoList"  parameterType="map" resultType="kr.co.seoulit.erp.logistic.outsourcing.to.OutsourcTO">
+		SELECT *
+		FROM  OUTSOURC_INFO o
+		WHERE o.FORWARD_STATUS is null
+		<if test='dateSearchCondtion=="CLAIM_DATE"'>
+			AND o.CLAIM_DATE BETWEEN #{startDate} AND #{endDate}
+		</if>
+		<if test='dateSearchCondtion=="DUE_DATE"'>
+			AND o.DUE_DATE BETWEEN #{startDate} AND #{endDate}
+		</if>
+	</select>
+
+
+	<select id = "searchForwardInfoList2"  resultType="kr.co.seoulit.erp.logistic.outsourcing.to.OutsourcTO">
+		SELECT *
+		FROM  OUTSOURC_INFO
+	</select>
+
 </mapper>

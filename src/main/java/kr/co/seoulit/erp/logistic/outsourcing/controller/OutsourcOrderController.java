@@ -47,6 +47,23 @@ public class OutsourcOrderController {
 		return resultMap;
 	}
 
+	@GetMapping(value = "searchOutsourcInfoList2")
+	public HashMap<String, Object> searchOutsourcInfoList(){
+
+		HashMap<String, Object> resultMap = new HashMap<>();
+		try {
+			resultMap.put("gridRowJson", outsourcSF.searchOutsourcInfoList());
+			resultMap.put("errorCode", 1);
+			resultMap.put("errorMsg", "성공");
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			resultMap.put("errorCode", -2);
+			resultMap.put("errorMsg", e.getMessage());
+		}
+		return resultMap;
+	}
+
 	@RequestMapping("/getStandardUnitPrice")
 	public ModelMap getStandardUnitPrice(HttpServletRequest request, HttpServletResponse response) {
 		String itemCode = request.getParameter("itemCode");

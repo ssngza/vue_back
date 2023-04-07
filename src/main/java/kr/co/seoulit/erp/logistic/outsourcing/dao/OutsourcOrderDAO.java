@@ -21,6 +21,11 @@ public interface OutsourcOrderDAO {
 
 	public ArrayList<OutsourcTO> selectOutsourcList(HashMap<String, String> param);
 
+	public ArrayList<OutsourcTO> selectOutsourcInfoList(HashMap<String, String> param);
+
 	public void updateNecessaryAmount(HashMap<String, Object> map);
 
+	public ArrayList<OutsourcTO> selectOutsourcInfoList();
+
+    public HashMap<String, Object> updateForwardStatus(HashMap<String, String> outsourcNo);
 }

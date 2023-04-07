@@ -46,14 +46,15 @@
 	</resultMap>
 
 	<parameterMap type="map" id="getWorkOrderSimulationParam">
+		<parameter property="mrpGatheringNo" mode="IN"/>
 		<parameter property="mrpNo" mode="IN"/>
-		<parameter property="errorCode" mode="OUT" javaType="java.lang.Integer" jdbcType="DECIMAL"/>
-		<parameter property="errorMsg" mode="OUT" javaType="java.lang.String" jdbcType="VARCHAR"/>
+		<parameter property="ERROR_CODE" mode="OUT" javaType="java.lang.Integer" jdbcType="DECIMAL"/>
+		<parameter property="ERROR_MSG" mode="OUT" javaType="java.lang.String" jdbcType="VARCHAR"/>
 		<parameter property="result" mode="OUT" javaType="java.sql.ResultSet" jdbcType="CURSOR"  resultMap="workOrderSimulationResultList" />
 	</parameterMap>
 
 	<select id="getWorkOrderSimulationList" parameterMap="getWorkOrderSimulationParam"  statementType="CALLABLE">
-		{call P_WORK_ORDER_SIMULATION(?,?,?,?)}
+		{call P_WORK_ORDER_SIMULATION(?,?,?,?,?)}
 	</select>
 
 	<parameterMap type="map" id="workOrderParameter">

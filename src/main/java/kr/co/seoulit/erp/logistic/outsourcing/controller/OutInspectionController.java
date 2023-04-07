@@ -6,11 +6,10 @@ import java.util.HashMap;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import kr.co.seoulit.erp.logistic.outsourcing.to.OutsourcTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import kr.co.seoulit.erp.logistic.outsourcing.servicefacade.OutsourcServiceFacade;
 import kr.co.seoulit.erp.logistic.outsourcing.to.OutInspectionTO;
@@ -25,8 +24,8 @@ public class OutInspectionController {
 
 	private ModelMap modelMap = new ModelMap();
 
-	@RequestMapping("/outInspectionInfoList")
-	public ModelMap outInspectionInfoList(HttpServletRequest request, HttpServletResponse response) {
+	@GetMapping("outInspectionInfoList")
+	public HashMap<String, Object> outInspectionInfoList(){
 
 		ArrayList<OutInspectionTO> outInspectionInfoList = null;
 
@@ -47,16 +46,18 @@ public class OutInspectionController {
 		return modelMap;
 	}
 
-	@RequestMapping("/outInspectionCompletion")
-	public HashMap<String, Object> outInspectionCompletion(HttpServletRequest request, HttpServletResponse response) {
+	@PostMapping("/outInspectionCompletion")
+	public HashMap<String, Object> outInspectionCompletion(@RequestBody OutsourcTO outsourcTO) {
 
-		String outsourcNo = request.getParameter("outsourcNo");
-		String actualCompletionAmount = request.getParameter("actualCompletionAmount");
+//		String outsourcNo = request.getParameter("outsourcNo");
+//		String actualCompletionAmount = request.getParameter("actualCompletionAmount");
 		HashMap<String, Object> resultMap = new HashMap<>();
 
 		try {
 
-			resultMap = outsourcSF.outInspectionCompletion(outsourcNo, actualCompletionAmount);
+			resultMap = outsourcSF.outInspectionCompletion(outsourcTO.getOutsourcNo()
+//					, actualCompletionAmount
+			);
 
 		} catch (Exception e2) {
 			e2.printStackTrace();
