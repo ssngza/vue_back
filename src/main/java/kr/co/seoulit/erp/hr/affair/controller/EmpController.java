@@ -34,7 +34,7 @@ public class EmpController {
      * 직접구현하시면 도움이 되실듯합니다.
 //     **/
 
-    @GetMapping("/empList")
+    @GetMapping("empList")
     public ResponseEntity<Map<String,Object>> empList() {
 
         Map<String, Object> map = new HashMap<String, Object>();
@@ -51,13 +51,17 @@ public class EmpController {
         return ResponseEntity.status(HttpStatus.OK).body(map);
     }
 
-    @GetMapping("/empList/{empCode}")
-    public ResponseEntity<Map<String, Object>> findEmp(@PathVariable String empCode) {
+
+
+
+    @GetMapping("/empList/selected")
+    public ResponseEntity<Map<String, Object>> findEmp(@RequestParam String empCode) {
+        System.out.println(empCode);
         ArrayList<EmployeeDetailTO> empDetail = null;
         Map<String, Object> map = new HashMap<String, Object>();
 
             empDetail = empServiceFacade.findEmpDetail(empCode);
-
+        System.out.println(empDetail);
             if(empDetail.isEmpty())
                 throw new UserNotFoundException("검색된 사용자 정보가 없습니다.");
 

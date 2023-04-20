@@ -20,6 +20,7 @@ public class EmpServiceFacadeImpl implements EmpServiceFacade {
 
 	@Override
 	public ArrayList<EmployeeDetailTO> findEmpDetail(String empCode){
+		System.out.println(empCode);
 		return empApplicationService.findEmpDetail(empCode);
 	}
 
