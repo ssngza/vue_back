@@ -19,20 +19,21 @@
       <result property="deptName" column="DEPT_NAME" />
       <result property="deptCode" column="DEPT_CODE" />
       <result property="detailCodeName" column="DETAIL_CODE_NAME" />
+      <result property="hireDate" column="HIRE_DATE" />
 
    </resultMap>
-  
-   
+
+   <!--직원 리스트 전체 조회(출력) : 전체 -->
    <select id="selectEmp]List" resultMap="empDetailedResult">
 			SELECT *
 			FROM EMPLOYEE_BASIC
 			ORDER BY DEPT_CODE
 		</select>
-   
-   
+
+   <!--직원 리스트 조회(출력) : 부서명, 직원명, 직책, 사번 -->
       <select id="selectEmpList" resultMap="empDetailedResult" parameterType="String">
 	SELECT*FROM(
-  SELECT D.DEPT_NAME, 
+  SELECT D.DEPT_NAME,
 		B.EMP_NAME,
         P.POSITION_NAME,
         B.EMP_CODE
@@ -46,19 +47,24 @@ GROUP BY DEPT_NAME,	EMP_NAME,POSITION_NAME,EMP_CODE
 ORDER BY DEPT_NAME
 	</select>
 
-
+   <!--직원 리스트 조회(출력) : 부서명, 직원명, 직책, 사번 -->
 	<select id="selectEmpAllList" resultMap="empDetailedResult">
-		SELECT e.COMPANY_CODE, e.EMP_CODE, e.EMP_NAME,
-		e.HIRE_DATE, e.RETIREMENT_DATE, e.USER_OR_NOT, e.BIRTH_DATE,
-		e.GENDER, e.DEPT_CODE, e.COLOR, c.DETAIL_CODE_NAME
+		SELECT e.EMP_CODE, e.EMP_NAME,
+		e.HIRE_DATE,e.BIRTH_DATE,e.GENDER, e.DEPT_CODE, c.DETAIL_CODE_NAME
 		FROM EMPLOYEE_BASIC e, CODE_DETAIL c WHERE e.DEPT_CODE = c.DETAIL_CODE
 		ORDER BY e.EMP_CODE
+/*        SELECT e.COMPANY_CODE, e.EMP_CODE, e.EMP_NAME,
+               e.HIRE_DATE, e.RETIREMENT_DATE, e.USER_OR_NOT, e.BIRTH_DATE,
+               e.GENDER, e.DEPT_CODE, e.COLOR, c.DETAIL_CODE_NAME
+        FROM EMPLOYEE_BASIC e, CODE_DETAIL c WHERE e.DEPT_CODE = c.DETAIL_CODE
+        ORDER BY e.EMP_CODE*/
+
 	</select>
-	
-   
+
+
    <select id="selectEmpListD" resultMap="empDetailedResult" parameterType="String">
 	SELECT*FROM(
-  SELECT D.DEPT_NAME, 
+  SELECT D.DEPT_NAME,
 				B.EMP_NAME,
         P.POSITION_NAME,
         B.EMP_CODE
@@ -70,11 +76,11 @@ ORDER BY DEPT_NAME
 		ORDER BY B.EMP_NAME)
 GROUP BY DEPT_NAME,	EMP_NAME,POSITION_NAME,EMP_CODE
 	</select>
-	
-	
+
+
 	   <select id="selectEmpListN" resultMap="empDetailedResult" parameterType="String">
 	SELECT*FROM(
-  SELECT D.DEPT_NAME, 
+  SELECT D.DEPT_NAME,
 				B.EMP_NAME,
         P.POSITION_NAME,
         B.EMP_CODE
@@ -86,7 +92,7 @@ GROUP BY DEPT_NAME,	EMP_NAME,POSITION_NAME,EMP_CODE
 		ORDER BY B.EMP_NAME)
 GROUP BY DEPT_NAME,	EMP_NAME,POSITION_NAME,EMP_CODE
 	</select>
-	
+
 
    <select id="selectEmployee" resultMap="empDetailedResult"
       parameterType="map">
@@ -197,7 +203,7 @@ GROUP BY DEPT_NAME,	EMP_NAME,POSITION_NAME,EMP_CODE
       )
       )
       WHERE COMPANY_NAME = #{company}
-      
+
       <if test=' workPlace != null and workPlace != "" '>
          AND WORKPLACE_NAME = #{workPlace}
       </if>
@@ -212,18 +218,18 @@ GROUP BY DEPT_NAME,	EMP_NAME,POSITION_NAME,EMP_CODE
 
    <update id="updateEmployee" parameterType="kr.co.seoulit.erp.hr.affair.to.EmployeeDetailTO"
       statementType="CALLABLE">
-      {CALL P_EMPLOYEE_UPDATE( 
-      #{empCode mode=IN jdbcType=VARCHAR 30}, 
+      {CALL P_EMPLOYEE_UPDATE(
+      #{empCode mode=IN jdbcType=VARCHAR 30},
       #{address mode=IN jdbcType=VARCHAR 30},
       #{birthDate mode=IN jdbcType=VARCHAR30},
-      #{detailAddress mode=IN jdbcType=VARCHAR 30}, 
+      #{detailAddress mode=IN jdbcType=VARCHAR 30},
       #{email mode=IN jdbcType=VARCHAR 30},
       #{gender mode=IN jdbcType=VARCHAR 30},
-      #{mobileNumber mode=IN jdbcType=VARCHAR30}, 
-      #{workPlace mode=IN jdbcType=VARCHAR30}, 
-      #{position mode=IN jdbcType=VARCHAR 30}, 
+      #{mobileNumber mode=IN jdbcType=VARCHAR30},
+      #{workPlace mode=IN jdbcType=VARCHAR30},
+      #{position mode=IN jdbcType=VARCHAR 30},
       #{empName mode=IN jdbcType=VARCHAR 30},
-      #{errorCode mode=OUT jdbcType=VARCHAR}, 
+      #{errorCode mode=OUT jdbcType=VARCHAR},
       #{errorMsg mode=OUT jdbcType=VARCHAR} ) }
    </update>
 <!-- //******************************************************08-26 손유찬 **************************************************** */ -->
@@ -252,13 +258,13 @@ GROUP BY DEPT_NAME,	EMP_NAME,POSITION_NAME,EMP_CODE
       <parameter property="gender" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
       <parameter property="authorityCode" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
       <parameter property="accessCode" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
-   </parameterMap>   
-   
-   
+   </parameterMap>
+
+
 <insert id="registEmployee" parameterMap="RegistEMP" statementType="CALLABLE">
 <![CDATA[
 {CALL P_EMP_REGISTER(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,? )}
-       ]]>   
+       ]]>
 </insert>
 <!-- //******************************************************08-26 손유찬 **************************************************** */ -->
 
@@ -281,14 +287,14 @@ GROUP BY DEPT_NAME,	EMP_NAME,POSITION_NAME,EMP_CODE
 <!-- <select id="selectEmpListD" parameterType="STRING" resultMap="employeeInfoResult">
    SELECT * FROM EMPLOYEE_BASIC WHERE DEPT_CODE=#{dept}
    </select> -->
-   
+
    <select id="selectEmpMemberListD" parameterType="STRING" resultMap="employeeInfoResult">
    SELECT EM.*, DM.DEPT_NAME
 FROM EMPLOYEE_BASIC EM, DEPARTMENT DM
 WHERE EM.DEPT_CODE=DM.DEPT_CODE
 AND EM.DEPT_CODE=#{dept}
-   
-   
+
+
    </select>
 
 </mapper>

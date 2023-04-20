@@ -15,7 +15,8 @@
       <result property="empAssign" column="EMP_ASSIGN" />
       <result property="assignCode" column="ASSIGN_CODE" />
    </resultMap>
-   
+
+	<!--직원 발령(입력) : 사번, 발령일, 현재부서, 발령부서 -->
 <insert id="insertAssign" parameterType="map">
 	INSERT INTO EMP_ASSIGN(
 	EMP_ASSIGN_CODE, EMP_CODE, ASSIGN_DATE, CURRENT_DIVISION, ASSIGN_DIVISION
@@ -28,6 +29,8 @@
 	)
 </insert>
 
+	<!--직원 발령(출력) : 발령 코드, 사번, 발령종류, 사원명, 발령일, 직원 직급, 현재부서, 발령부서, 사원발령내용 -->
+	<!--직원 발령(입력) : 조회 시작일, 조회 최종일 -->
 <select id="selectAssignList" parameterType="String" resultMap="empAssignResult">
 	SELECT e.EMP_ASSIGN_CODE, e.EMP_CODE, e.ASSIGN_TYPE,
 	b.EMP_NAME,
@@ -43,6 +46,7 @@
 	ORDER BY ASSIGN_DATE
 </select>
 
+	<!--직원 발령(입력) : 이동 부서코드, 사번 -->
 <update id="updateDeptCode" parameterType="map">
 	UPDATE EMPLOYEE_BASIC SET DEPT_CODE = #{MoveDept} WHERE EMP_CODE = #{EmpCode}
 </update>

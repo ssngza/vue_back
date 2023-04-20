@@ -12,7 +12,7 @@
       <result property="remainingHoliday" column="REMAINING_HOLIDAY" />
       <result property="finalizeStatus" column="FINALIZE_STATUS" />
    </resultMap>
-   
+
 
    <parameterMap type="map" id="annualVacationMgtParameter" >
       <parameter property="applyYearMonth" mode="IN" />
@@ -20,40 +20,43 @@
       <parameter property="errorCode" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT" />
       <parameter property="errorMsg" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT" />
    </parameterMap>
-   
+<!--연차 조회-->
       <select id="batchAnnualVacationMgtProcess" statementType="CALLABLE" parameterMap="annualVacationMgtParameter">
       <![CDATA[
            {call P_HR_VACATION.P_CREATE_ANNUAL_VACATION(?,?,?,?)}
        ]]>
    </select>
-   
+   <!--연차 내역 수정  // 연차 관리 테이블 ( 입력자료 : 마감, 사번, 연차 적용연월) -->
    <update id="updateAnnualVacationMgtList" parameterType="kr.co.seoulit.erp.hr.attendance.to.annualVacationMgtTO">
       UPDATE ANNUAL_VACATION_MANAGE SET
       FINALIZE_STATUS = #{finalizeStatus}
       WHERE EMP_CODE = #{empCode}
       AND APPLY_YEAR_MONTH = #{applyYearMonth}
-   </update>   
-   
+   </update>
+
+<!--연차 내역 수정 // 연차 테이블 ( 입력자료 : 연차잔량, 사번, 적용연월)  -->
    <update id="updateAnnualVacationList" parameterType="kr.co.seoulit.erp.hr.attendance.to.annualVacationMgtTO">
-      UPDATE ANNUAL_VACATION 
+      UPDATE ANNUAL_VACATION
       SET remain_vacation = #{remainingHoliday}
       WHERE EMP_CODE = #{empCode}
       AND year = #{applyYearMonth}
-   </update>   
-   
+   </update>
+
+   <!--연차 취소 내역 // 연차관리 테이블 ( 입력자료 : 마감, 연차잔량, 사번, 적용연월)  -->
    <update id="cancelAnnualVacationMgtList" parameterType="kr.co.seoulit.erp.hr.attendance.to.annualVacationMgtTO">
-      UPDATE ANNUAL_VACATION_MANAGE 
+      UPDATE ANNUAL_VACATION_MANAGE
       SET FINALIZE_STATUS = #{finalizeStatus}
       ,REMAINING_HOLIDAY = #{remainingHoliday}
       WHERE EMP_CODE = #{empCode}
       AND APPLY_YEAR_MONTH = #{applyYearMonth}
-   </update>   
+   </update>
 
+   <!--연차 취소 내역 // 연차 테이블 ( 입력자료 : 연차잔량, 사번, 적용연월)  -->
    <update id="cancelAnnualVacationList" parameterType="kr.co.seoulit.erp.hr.attendance.to.annualVacationMgtTO">
-      UPDATE ANNUAL_VACATION 
+      UPDATE ANNUAL_VACATION
       SET remain_vacation = #{remainingHoliday}
       WHERE EMP_CODE = #{empCode}
       AND year = #{applyYearMonth}
-   </update>   
-    
+   </update>
+
 </mapper>

@@ -36,7 +36,7 @@ public class CompanyController {
       try {
 
          companyList = orgSF.getCompanyList();
-        //         companyList=    
+        //         companyList=
          modelMap.put("gridRowJson", companyList);
          modelMap.put("errorCode", 1);
          modelMap.put("errorMsg", "����");
@@ -73,7 +73,7 @@ public class CompanyController {
       }
       return modelMap;
    }
-   
+
    @RequestMapping(value="/searchPosition",method=RequestMethod.GET)
    public ModelMap searchPositionList() {
 
@@ -84,7 +84,7 @@ public class CompanyController {
       try {
          System.out.println("=======================��Ʈ�ѷ�       searchPositionList�޼������===========================");
          positionList = orgSF.getPositionList();
-        //         companyList=    
+        //         companyList=
          modelMap.put("gridRowJson", positionList);
          modelMap.put("errorCode", 1);
          modelMap.put("errorMsg", "����");
