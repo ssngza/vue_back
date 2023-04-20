@@ -177,7 +177,7 @@ public class BaseServiceFacadeImpl implements BaseServiceFacade {
 		EmpInfoTO empTo = empSearchingDAO.getTotalEmpInfo(map);
 
 		if (empTo == null)
-			throw new IdNotFoundException("�엯�젰�맂 �젙蹂댁뿉 �빐�떦�븯�뒗 �궗�썝�� �뾾�뒿�땲�떎.");
+			throw new IdNotFoundException("아이디가 틀렸습니다..");
 
 		return empTo;
 
@@ -194,7 +194,7 @@ public class BaseServiceFacadeImpl implements BaseServiceFacade {
 
 		if (empSecretInfo != null)
 			if (!empSecretInfo.getUserPassword().equals(passWord))
-				throw new PwMissMatchException("鍮꾨�踰덊샇瑜� �솗�씤 �빐二쇱꽭�슂.");
+				throw new PwMissMatchException("비밀번호가 틀렸습니다");
 
 	};
 

@@ -28,8 +28,9 @@ public interface SalaryServiceFacade {
 	public HashMap<String, Object> CloseSalary(String applyYearMonth, String deptCode);
 	public void closeMonthSalary(MonthSalaryTO empCodeList);
 	
-	public BonusTO findterBonus(BonusTO bonus);
+	public ArrayList<BonusTO> finderBonus();
 	public void registerBonus(BonusTO bonus);
+	public void updateBonus(BonusTO bonus);
 	public void removeAllBonus();
 	public ArrayList<BaseSalaryTO> BaseSalaryList(String selectDeptTitle);
 	

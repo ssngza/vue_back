@@ -5,15 +5,21 @@
 	
 	<resultMap type="kr.co.seoulit.erp.hr.salary.to.BonusTO" id="bonusResult">
 		<result property="empCode" column="EMP_CODE" />
+		<result property="empName" column="EMP_NAME" />
+		<result property="deptCode" column="DEPT_CODE" />
 		<result property="applyYearMonth" column="APPLY_YEAR_MONTH" />
 		<result property="bonus" column="BONUS" />
+		<result property="bonusName" column="BONUS_NAME" />
+		<result property="bonusRemark" column="BONUS_REMARK" />
+		<result property="deductionAmount" column="DEDUCTION_AMOUNT" />
+
 	</resultMap>
 	
-	<select id="selectBonus" parameterType="kr.co.seoulit.erp.hr.salary.to.BonusTO" resultMap="bonusResult">
-		SELECT * 
-		FROM BONUS
-		WHERE EMP_CODE = #{empCode}
-		AND APPLY_YEAR_MONTH = #{applyYearMonth}
+	<select id="selectBonus" resultMap="bonusResult">
+		SELECT e1.EMP_CODE,e1.EMP_NAME ,e1.DEPT_CODE,e2.APPLY_YEAR_MONTH,e2.BONUS,e2.BONUS_NAME,e2.BONUS_REMARK,e2.DEDUCTION_AMOUNT
+		FROM EMPLOYEE_BASIC e1, BONUS e2
+		WHERE e1.EMP_code = e2.emp_code
+
 	</select>
 	
 	<insert id="insertBonus" parameterType="kr.co.seoulit.erp.hr.salary.to.BonusTO">
@@ -23,7 +29,16 @@
 		#{bonus}
 		)
 	</insert>
-	
+
+	<update id="updateBonus" parameterType="kr.co.seoulit.erp.hr.salary.to.BonusTO">
+		UPDATE BONUS
+		SET APPLY_YEAR_MONTH = #{applyYearMonth},
+			BONUS = #{bonus},
+			BONUS_NAME = #{bonusName},
+			BONUS_REMARK = #{bonusRemark},
+			DEDUCTION_AMOUNT = #{deductionAmount}
+		WHERE EMP_CODE = #{empCode}
+	</update>
 	
 	<delete id="deleteAllBonus" parameterType="kr.co.seoulit.erp.hr.salary.to.BonusTO">
 		DELETE FROM BONUS

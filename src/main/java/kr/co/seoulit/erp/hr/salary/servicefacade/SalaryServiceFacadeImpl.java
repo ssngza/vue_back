@@ -86,15 +86,20 @@ public class SalaryServiceFacadeImpl implements SalaryServiceFacade{
 	}
 
 	@Override
-	public BonusTO findterBonus(BonusTO bonus) {
+	public ArrayList<BonusTO> finderBonus() {
 		// TODO Auto-generated method stub
-		return bonusApplicationService.findterBonus(bonus);
+		return bonusApplicationService.finderBonus();
 	}
 
 	@Override
 	public void registerBonus(BonusTO bonus) {
 		// TODO Auto-generated method stub
 		bonusApplicationService.registerBonus(bonus);
+	}
+
+	@Override
+	public void updateBonus(BonusTO bonus) {
+		bonusApplicationService.updateBonus(bonus);
 	}
 
 	@Override

@@ -6,6 +6,8 @@ import org.springframework.stereotype.Component;
 import kr.co.seoulit.erp.hr.salary.dao.BonusDAO;
 import kr.co.seoulit.erp.hr.salary.to.BonusTO;
 
+import java.util.ArrayList;
+
 @Component
 public class BonusApplicationServiceImpl implements BonusApplicationService{
 
@@ -15,9 +17,9 @@ public class BonusApplicationServiceImpl implements BonusApplicationService{
 	private BonusDAO bonusDAO;
 	
 	@Override
-	public BonusTO findterBonus(BonusTO bonus) {
+	public ArrayList<BonusTO> finderBonus() {
 		// TODO Auto-generated method stub
-		return bonusDAO.selectBonus(bonus);
+		return bonusDAO.selectBonus();
 	}
 
 	@Override
@@ -31,5 +33,10 @@ public class BonusApplicationServiceImpl implements BonusApplicationService{
 		// TODO Auto-generated method stub
 		bonusDAO.deleteAllBonus();
 	}
-	
+
+	@Override
+	public void updateBonus(BonusTO bonus) {
+		bonusDAO.updateBonus(bonus);
+	}
+
 }
