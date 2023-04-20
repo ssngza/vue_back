@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="kr.co.seoulit.erp.hr.affair.dao.CareerInfoDAO">	
+<mapper namespace="kr.co.seoulit.erp.hr.affair.dao.CareerInfoDAO">
 
 
 
@@ -14,13 +14,17 @@
 		<result property="exHiredate" column="EX_HIREDATE" />
 		<result property="exRetirementDate" column="EX_RETIREMENT_DATE" />
 	</resultMap>
-	
+
+	<!-- 선택 사원 경력 정보(출력) : 전체-->
+	<!-- 선택 사원 경력 정보(입력) : 사번-->
 	<select id="selectCareerInfoList" resultMap="careerInfoResult"
 		parameterType="string">
 	SELECT * FROM CAREER_INFO
-	WHERE EMP_CODE=#{code}
+	WHERE EMP_CODE= #{code}
 	</select>
 
+	<!--선택 사원 경력 내역(출력)  : 사번, 경력코드, 회사명, 직업, 직무, 전회사 입사일, 전회사 퇴사일-->
+	<!-- 선택 사원 경력 내역(입력) : 사번-->
 	<select id="selectCareerList" resultMap="careerInfoResult"
 		parameterType="string">
 		SELECT EMP_CODE
@@ -35,6 +39,7 @@
 		WHERE EMP_CODE = #{code}
 	</select>
 
+	<!--직원 경력 등록(입력) : 사번, 회사명, 직업, 직무, 전회사 입사일, 전회사 퇴사일-->
 	<insert id="insertCareerInfo" parameterType="kr.co.seoulit.erp.hr.affair.to.CareerInfoTO">
 		INSERT INTO CAREER_INFO VALUES (
 		#{empCode}
@@ -46,8 +51,9 @@
 		)
 	</insert>
 
+<!--직원 경력 수정(입력) : 회사명, 직업, 직무, 전회사 입사일, 전회사 퇴사일, 사번, 경력코드-->
 	<update id="updateCareerInfo" parameterType="kr.co.seoulit.erp.hr.affair.to.CareerInfoTO">
-		UPDATE CAREER_INFO SET 
+		UPDATE CAREER_INFO SET
 		COMPANY_NAME = #{companyName}
 		, OCCUPATION = #{occupation}
 		, ASSIGNMENT_TASK = #{assignmentTask}
@@ -57,6 +63,7 @@
 		AND CAREER_CODE = #{careerCode}
 	</update>
 
+	<!--직원 경력 삭제(입력) : 사번, 경력코드-->
 	<delete id="deleteCareerInfo" parameterType="kr.co.seoulit.erp.hr.affair.to.CareerInfoTO">
 		DELETE FROM CAREER_INFO
 		WHERE EMP_CODE = #{empCode}

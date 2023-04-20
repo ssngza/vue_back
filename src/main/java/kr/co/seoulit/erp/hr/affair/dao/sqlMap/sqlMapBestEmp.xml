@@ -4,7 +4,7 @@
 <mapper namespace="kr.co.seoulit.erp.hr.affair.dao.BestEmpDAO">
 
    <resultMap type="BestEmpTO" id="bestEmpResult">
-		
+
 	  <result property="companyCode" column="COMPANY_CODE" />
       <result property="empCode" column="EMP_CODE" />
       <result property="img" column="IMG" />
@@ -13,17 +13,17 @@
       <result property="deptName" column="DEPT_NAME" />
       <result property="weekdayWorkDays" column="WEEKDAY_WORK_DAYS" />
       <result property="applyYearMonth" column="APPLY_YEAR_MONTH" />
-      
+
    </resultMap>
-  
-   
+
+   <!--우수사원(출력) : 회사 코드, 사원명, 사번, 부서코드, 부서명, 사진, 등록일, 월 근무일 -->
    <select id="getBestEmp" resultMap="bestEmpResult">
-   		select  e.company_code 
-   		      , e.emp_name 
-   		      , m.emp_code 
-   		      , e.dept_code 
+   		select  e.company_code
+   		      , e.emp_name
+   		      , m.emp_code
+   		      , e.dept_code
               , d.dept_name
-   		      , e.img 
+   		      , e.img
               , m.apply_year_month
    		      , (
    		      		select max(weekday_work_days)
@@ -33,7 +33,7 @@
 		where  e.emp_code = m.emp_code
         and e.dept_code = d.dept_code
 		and apply_year_month = (
-                                select to_char(add_months(sysdate,-1), 'yyyy-mm') 
+                                select to_char(add_months(sysdate,-1), 'yyyy-mm')
                                 from dual
                               )
 		and rownum = 1

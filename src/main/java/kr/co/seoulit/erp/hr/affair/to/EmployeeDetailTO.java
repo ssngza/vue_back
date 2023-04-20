@@ -24,4 +24,12 @@ public class EmployeeDetailTO extends BaseTO {
 	 private String levelOfEducation;
 	 private String image;
 
+	 private String empName;
+	 private String deptName;
+	 private String gender;
+	 private String hireDate;
+	 private String birthDate;
+	 private String workplaceName;
+	 private String positionName;
+
 }
