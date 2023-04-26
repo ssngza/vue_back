@@ -14,4 +14,6 @@ public interface BonusDAO {
 	public void deleteAllBonus();
 
 	public void updateBonus(BonusTO bonus);
+
+	public BonusTO findEmp(String empCode);
 }

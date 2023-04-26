@@ -11,10 +11,19 @@
 		<result property="bonusRemark" column="BONUS_REMARK" />
 		<result property="deductionAmount" column="DEDUCTION_AMOUNT" />
 	</resultMap>
-	
+
+
+
+
 	<select id="selectBonus" parameterType="kr.co.seoulit.erp.hr.salary.to.BonusTO" resultMap="bonusResult">
 		SELECT * 
 		FROM BONUS
+	</select>
+
+	<select id="findEmp" parameterType="String" resultMap="kr.co.seoulit.erp.hr.affair.dao.sqlMap.empDetailedResult">
+		SELECT e.EMP_NAME, e.DEPT_CODE
+		from EMPLOYEE_BASIC e
+		where e.EMP_CODE = #{empCode}
 
 	</select>
 	

@@ -10,4 +10,6 @@ public interface BonusApplicationService {
 	public void removeAllBonus();
 
 	public void updateBonus(BonusTO bonus);
+
+	public BonusTO findEmp(String empCode);
 }

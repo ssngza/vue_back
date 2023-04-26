@@ -36,5 +36,6 @@ public interface SalaryServiceFacade {
 	
 	public ArrayList<SocialInsureTO> findBaseInsureList(String searchYear);
 	public ArrayList<SeveranceTO> findSeverancePay(String empName);
-	
+
+	public BonusTO findEmp(String empCode);
 }

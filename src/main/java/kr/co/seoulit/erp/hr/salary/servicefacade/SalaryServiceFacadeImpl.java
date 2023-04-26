@@ -127,4 +127,10 @@ public class SalaryServiceFacadeImpl implements SalaryServiceFacade{
 			ArrayList<SeveranceTO> severancePayList=salaryApplicationService.findSeverancePayList(empName);
 			return severancePayList;	
 	}
+
+	@Override
+	public BonusTO findEmp(String empCode) {
+		return bonusApplicationService.findEmp(empCode);
+
+	}
 }

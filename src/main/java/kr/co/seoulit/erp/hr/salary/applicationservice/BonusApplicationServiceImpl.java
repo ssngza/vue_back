@@ -39,4 +39,9 @@ public class BonusApplicationServiceImpl implements BonusApplicationService{
 		bonusDAO.updateBonus(bonus);
 	}
 
+	@Override
+	public BonusTO findEmp(String empCode) {
+		return bonusDAO.findEmp(empCode);
+	}
+
 }

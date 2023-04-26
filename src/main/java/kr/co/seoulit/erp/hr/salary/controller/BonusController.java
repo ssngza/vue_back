@@ -7,16 +7,12 @@ import java.util.HashMap;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import kr.co.seoulit.erp.hr.salary.servicefacade.SalaryServiceFacade;
 import kr.co.seoulit.erp.hr.salary.to.BonusTO;
 
-@CrossOrigin(origins = "http://localhost:8081")
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/hr/salary/")
 public class BonusController {
@@ -30,6 +26,24 @@ public class BonusController {
 		try {
 			ArrayList<BonusTO> list = salaryServiceFacade.finderBonus();
 			map.put("empBonus", list);
+			map.put("errorMsg","success");
+			map.put("errorCode", 0);
+
+		} catch (Exception ioe) {
+			map.clear();
+			map.put("errorCode", -1);
+			map.put("errorMsg", ioe.getMessage());
+		}
+
+		return map;
+	}
+
+
+	@RequestMapping(value = "/findEmp",method = RequestMethod.POST)
+	public HashMap<String,Object> findEmp(@RequestParam String empCode){
+		try {
+			BonusTO emp = salaryServiceFacade.findEmp(empCode);
+			map.put("emp", emp);
 			map.put("errorMsg","success");
 			map.put("errorCode", 0);
 
