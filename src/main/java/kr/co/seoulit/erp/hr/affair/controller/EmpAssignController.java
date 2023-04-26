@@ -20,8 +20,8 @@ import kr.co.seoulit.erp.hr.affair.to.AssignEmpTO;
 @CrossOrigin("*")
 @RestController
 @RequestMapping("/hr/affair/*")
-public class EmpAssignController {
-	
+public class  EmpAssignController {
+
 	@Autowired
 	private EmpServiceFacade empServiceFacade;
 

@@ -3,6 +3,7 @@ package kr.co.seoulit.erp.hr.salary.applicationservice;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import kr.co.seoulit.erp.hr.salary.to.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -15,12 +16,6 @@ import kr.co.seoulit.erp.hr.salary.dao.MonthSalaryDAO;
 import kr.co.seoulit.erp.hr.salary.dao.SeverancePayDAO;
 import kr.co.seoulit.erp.hr.salary.dao.SocialInsureDAO;
 import kr.co.seoulit.erp.hr.salary.repository.MonthSalaryRepository;
-import kr.co.seoulit.erp.hr.salary.to.BaseDeductionTO;
-import kr.co.seoulit.erp.hr.salary.to.BaseExtSalTO;
-import kr.co.seoulit.erp.hr.salary.to.BaseSalaryTO;
-import kr.co.seoulit.erp.hr.salary.to.MonthSalaryTO;
-import kr.co.seoulit.erp.hr.salary.to.SeveranceTO;
-import kr.co.seoulit.erp.hr.salary.to.SocialInsureTO;
 
 @Component
 public class SalaryApplicationServiceImpl implements SalaryApplicationService{
@@ -181,5 +176,7 @@ public class SalaryApplicationServiceImpl implements SalaryApplicationService{
 		
 		ArrayList<SeveranceTO> severancePayList = severancePayDAO.selectSeverancePayList(empName);
 		return severancePayList;
-	};
+	}
+
+
 }

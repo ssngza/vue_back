@@ -3,12 +3,7 @@ package kr.co.seoulit.erp.hr.salary.applicationservice;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import kr.co.seoulit.erp.hr.salary.to.BaseDeductionTO;
-import kr.co.seoulit.erp.hr.salary.to.BaseExtSalTO;
-import kr.co.seoulit.erp.hr.salary.to.BaseSalaryTO;
-import kr.co.seoulit.erp.hr.salary.to.MonthSalaryTO;
-import kr.co.seoulit.erp.hr.salary.to.SeveranceTO;
-import kr.co.seoulit.erp.hr.salary.to.SocialInsureTO;
+import kr.co.seoulit.erp.hr.salary.to.*;
 
 public interface SalaryApplicationService {
 	
@@ -29,5 +24,5 @@ public interface SalaryApplicationService {
 	public ArrayList<BaseSalaryTO> BaseSalaryList(String selectDeptTitle);
 	public ArrayList<SocialInsureTO> findBaseInsureList(String searchYear);
 	public ArrayList<SeveranceTO> findSeverancePayList(String empName);
-	
+
 }

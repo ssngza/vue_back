@@ -7,5 +7,6 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode(callSuper = false)
 public class BonusTO extends BaseTO{
-	private String empCode,applyYearMonth,bonus;
+	private String empCode,applyYearMonth,bonusName,bonusRemark,empName,deptCode;
+	private int bonus,deductionAmount;
 }
