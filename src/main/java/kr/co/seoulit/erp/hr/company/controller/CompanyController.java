@@ -39,7 +39,7 @@ public class CompanyController {
         //         companyList=
          modelMap.put("gridRowJson", companyList);
          modelMap.put("errorCode", 1);
-         modelMap.put("errorMsg", "����");
+         modelMap.put("errorMsg", "성공");
 
       } catch (DataAccessException e2) {
          e2.printStackTrace();

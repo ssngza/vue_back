@@ -4,7 +4,6 @@
 <mapper namespace="kr.co.seoulit.erp.hr.affair.dao.EmpDAO">
 
    <resultMap type="EmpTO" id="empDetailedResult">
-
       <result property="empCode" column="EMP_CODE" />
       <result property="empName" column="EMP_NAME" />
       <result property="birthDate" column="BIRTH_DATE" />
@@ -31,7 +30,7 @@
 		</select>
 
    <!--직원 리스트 조회(출력) : 부서명, 직원명, 직책, 사번 -->
-      <select id="selectEmpList" resultMap="empDetailedResult" parameterType="String">
+         <select id="selectEmpList" resultMap="empDetailedResult" parameterType="String">
 	SELECT*FROM(
   SELECT D.DEPT_NAME,
 		B.EMP_NAME,

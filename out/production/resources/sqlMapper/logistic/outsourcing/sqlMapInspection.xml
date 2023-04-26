@@ -24,7 +24,7 @@
 	</resultMap>
 	
 	<select id="selectOutInspectionInfoList" resultMap="OutInspectionInfoListA">
-	SELECT*FROM OUTSOURC_INFO
+	SELECT * FROM OUTSOURC_INFO
 	WHERE 
 	FORWARD_STATUS = 'Y' 
 	AND 
