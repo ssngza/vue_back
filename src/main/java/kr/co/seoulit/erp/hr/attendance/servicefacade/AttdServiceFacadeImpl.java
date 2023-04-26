@@ -17,7 +17,7 @@ import kr.co.seoulit.erp.hr.base.to.HrDetailCodeTO;
 
 @Service
 public class AttdServiceFacadeImpl implements AttdServiceFacade{
-@Autowired   
+@Autowired
 private AttdApplicationService attdApplicationService;
 
 @Override
@@ -32,19 +32,18 @@ public void modifyAnnualVacationMgtList(ModelMap modelMap) {
 }
 	@Override
 	public ArrayList<DayAttdTO> findDayAttdList(String empCode, String applyDay) {
-		ArrayList<DayAttdTO> dayAttdList=attdApplicationService.findDayAttdList(empCode, applyDay);
-			return dayAttdList;
+			return attdApplicationService.findDayAttdList(empCode, applyDay);
 		}
-	
-	@Override  
+
+	@Override
 	public HashMap<String,Object> registDayAttd(DayAttdTO dayAttd) {
 			return attdApplicationService.registDayAttd(dayAttd);
-			
+
 		}
 	@Override
 	public ArrayList<RestAttdTO> findRestAttdList(String empCode, String startDate, String endDate, String code) {
 			ArrayList<RestAttdTO> restAttdList = attdApplicationService.findRestAttdList(empCode, startDate, endDate, code);
-			return restAttdList;	
+			return restAttdList;
 		}
 	@Override
 	public ArrayList<RestAttdTO> findRestAttdListByDept(HashMap<String,String> attdApplMap) {
@@ -60,10 +59,10 @@ public void modifyAnnualVacationMgtList(ModelMap modelMap) {
 
 	@Override
 	public void registRestAttd(RestAttdTO restAttd) {
-			
+
 		attdApplicationService.registRestAttd(restAttd);
 		}
- 
+
 	@Override
 	public ArrayList<DayAttdMgtTO> findDayAttdMgtList(String applyDay) {
 			ArrayList<DayAttdMgtTO> dayAttdMgtList = attdApplicationService.findDayAttdMgtList(applyDay);
@@ -75,7 +74,7 @@ public void modifyAnnualVacationMgtList(ModelMap modelMap) {
 		}
 	@Override
 	public ArrayList<MonthAttdMgtTO> findMonthAttdMgtList(String applyYearMonth) {
-		
+
 			return attdApplicationService.findMonthAttdMgtList(applyYearMonth);
 		}
 	@Override
@@ -85,9 +84,9 @@ public void modifyAnnualVacationMgtList(ModelMap modelMap) {
 	@Override
 	public void insertDayAttd(DayAttdTO dayAttd) {
 			attdApplicationService.insertDayAttd(dayAttd);
-	
+
 		}
-	
+
 	   @Override  ///占쎈쐻占쎈뼢�뇡�빘�굲
 	   public ArrayList<DayAttdMgtTO> findDayAttdMgtListAll(HashMap<String, Object> map) {
 	      // TODO Auto-generated method stub
@@ -97,13 +96,13 @@ public void modifyAnnualVacationMgtList(ModelMap modelMap) {
 	   @Override   ///占쎈쐻占쎈뼢�뇡�빘�굲
 	   public ArrayList<DayAttdMgtTO> dayDeadlineRegister(HashMap<String, Object> map) {
 	      // TODO Auto-generated method stub
-	      
+
 	      return attdApplicationService.dayDeadlineRegister(map);
 	   }
 
 	@Override
 	  public HashMap<String, Object> findDayAttdMgtList(HashMap<String,Object> map) {
-		
+
 		HashMap<String, Object> result = attdApplicationService.findDayAttdMgtList(map);
 		return result;
 	      }
@@ -119,7 +118,7 @@ public void modifyAnnualVacationMgtList(ModelMap modelMap) {
 		// TODO Auto-generated method stub
 		return attdApplicationService.searchRestAttendanceType();
 	}
-	
+
 	//�뜝�럩�궨�뜝�럩寃� �뜝�럩逾у윜諭��닗繹먲옙 �뼨轅명�▽빳�맠占쎄퀗�э옙�뤂 �뜝�럡�뀭�뜝�럩�젷
 	@Override
 	public void deleteDayAttd(ArrayList<DayAttdTO> dayAttdData) {
@@ -127,10 +126,10 @@ public void modifyAnnualVacationMgtList(ModelMap modelMap) {
 	}
 	//********************* �뇦猿됲�ｏ옙�젷�뜝�럥諭잌뜝�럩逾ο옙苑닷뜝�뜾逾녑뜝占� �뜝�럩�꼪�뜝�럩�젧 2020-09-20  �뜝�럩�궨�뜝�럩寃� *********************
 	@Override
-	public ArrayList<RestAttdTO> modifyRestAttdList(List<RestAttdTO> restAttdTo, String deptCode, String startDate, String endDate) { 
+	public ArrayList<RestAttdTO> modifyRestAttdList(List<RestAttdTO> restAttdTo, String deptCode, String startDate, String endDate) {
 		ArrayList<RestAttdTO> restAttdList  = attdApplicationService.modifyRestAttdList(restAttdTo,deptCode,startDate,endDate);
-		
+
 		return restAttdList;
 	}
-	
+
 }
