@@ -63,7 +63,6 @@ public class AttdApplicationServiceImpl implements AttdApplicationService {
 
 	@Override
 	public ArrayList<DayAttdTO> findDayAttdList(String empCode, String applyDay) {
-		// TODO Auto-generated method stub
 
 		ArrayList<DayAttdTO> dayAttdList = dayAttdDAO.selectDayAttdList(empCode, applyDay);
 
@@ -108,12 +107,12 @@ public class AttdApplicationServiceImpl implements AttdApplicationService {
 //@Override
 //public void removeDayAttdList(ArrayList<DayAttdTO> dayAttdList) {
 //	// TODO Auto-generated method stub
-//	
+//
 //	for(DayAttdTO dayAttd : dayAttdList){
 //		dayAttdDAO.deleteDayAttd(dayAttd);
 //	}
-//	
-//	
+//
+//
 //}
 
 	@Override
@@ -157,7 +156,7 @@ public class AttdApplicationServiceImpl implements AttdApplicationService {
 		// TODO Auto-generated method stub
 		ArrayList<RestAttdTO> restAttdList = null;
 //		HashMap<String, Object> map = new HashMap<>();
-//		
+//
 //		if(deptName.equals("�뜝�럩�뀋�뜝�럡�땽�뜝�럥裕�占쎈쐻占쎈윪�뤃轅⑤쐻占쎈윥占쎈㎍占쎈쐻占쎈윥占쎈첑占쎈쐻占쎈윞�굜�굝�쐻占쎈윥鸚룐뫅�삕占쎈�占쎄콬�뜝�럡�렊占쎈쐻占쎈윥占쏙옙占쎈쐻占쎈윥占쎈뭵占쎈쐻占쎈윞占쎈젇�뜝�럥�맶�뜝�럥�쑅�뜝�럥�럪�뜝�럥�맶�뜝�럥�쑅�뜝�럩留쏙옙�쐻占쎈윥占쎈㎍�뜝�럥�맶占쎈쐻�뜝占�")) {
 //			restAttdList = restAttdDAO.selectRestAttdListByAllDept(startDate);
 //		}else {
@@ -203,11 +202,11 @@ public class AttdApplicationServiceImpl implements AttdApplicationService {
 //	@Override
 //	public void removeRestAttdList(ArrayList<RestAttdTO> restAttdList) {
 //		// TODO Auto-generated method stub
-//		
+//
 //		for(RestAttdTO restAttd : restAttdList){
 //			restAttdDAO.deleteRestAttd(restAttd);
 //		}
-//		
+//
 //	}
 
 //	********************* 占쎈눇�뙼�맪占쏙퐦�삕占쎄땍占쎈쐻占쎈윥獄��엺�쐻占쎈윪�앓우삕�땻�떣�쐻占쎈쑟�얜뀘�쐻�뜝占� �뜝�럥苑욃뜝�럡�꼤嶺뚯빢�삕 _2020.09.04 _占쎈쐻占쎈윪占쎄땍占쎈쐻占쎈윪野껓옙 *********************
@@ -335,25 +334,25 @@ public class AttdApplicationServiceImpl implements AttdApplicationService {
 //	//	********************* 占쎈눇�뙼�맪占쏙퐦�삕占쎄땍占쎈쐻占쎈윥獄��엺�쐻占쎈윪�앓우삕�땻�떣�쐻占쎈쑟�얜뀘�쐻�뜝占� 占쎈쐻占쎈윥筌묒궍�쐻占쎈윪占쎄탾 _2020.09.04 _占쎈쐻占쎈윪占쎄땍占쎈쐻占쎈윪野껓옙 *********************
 //	@Override
 //	public void modifyRestAttdList(HashMap<String,ArrayList<RestAttdTO>> attdApplMap) {
-//		// TODO Auto-generated method stub	
-//		
+//		// TODO Auto-generated method stub
+//
 //		HashMap<String, String> data = new HashMap<>();
-//		
+//
 //		ArrayList<RestAttdTO> list = attdApplMap.get("checkData");
-//		
+//
 //		System.out.println("?????????????????"+list);
-//		
-//		for(RestAttdTO attd : list) {			
-//			
+//
+//		for(RestAttdTO attd : list) {
+//
 //			data.put("applovalStatus", attd.getApplovalStatus());
 //			data.put("rejectCause", attd.getRejectCause());
 //			data.put("empCode", attd.getEmpCode());
 //			data.put("couse", attd.getCause());
 //			data.put("restAttdCode", attd.getRestAttdCode());
-//			
+//
 //			System.out.println("ZZZZZZZZZZZZZZZZZZZZZZZ"+data);
 //			restAttdDAO.updateRestAttd(data);
-//		}				
+//		}
 //	}
 
 	// =============================占쎈눇�뙼�맪占쏙퐦�삕占쎌졆占쎈쐻占쎈윥獄��엺�쐻占쎈윪�앓우삕�땻�떣�쐻占쎈쑟�얜뀘�쐻�뜝占�

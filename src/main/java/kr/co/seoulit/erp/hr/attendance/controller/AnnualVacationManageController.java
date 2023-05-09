@@ -20,13 +20,13 @@ import kr.co.seoulit.erp.hr.attendance.to.annualVacationMgtTO;
 @CrossOrigin("*")
 @RequestMapping("/hr/attendance/*")
 public class AnnualVacationManageController {
-	
+
 	@Autowired
 	private AttdServiceFacade attdServiceFacade;
 	HashMap<String, Object> map = new HashMap<>();
 	private ModelMap modelMap = new ModelMap();
 
-	// ��ȸ
+	//aaa
 	@RequestMapping(value = "/findAnnualVacationMgtList", method = RequestMethod.GET)
 	public ModelMap findAnnualVacationMgtList(@RequestParam String applyYearMonth) {
 		// TODO Auto-generated method stub
@@ -62,20 +62,20 @@ public class AnnualVacationManageController {
 	}
 
 	/*
-	 * 
+	 *
 	 * @RequestMapping(value="/attendance/findAnnualVacationMgtList",method=
 	 * RequestMethod.GET) public void modifyAnnualVacationMgtList(@RequestParam
 	 * String applyYearMonth){
-	 * 
+	 *
 	 * System.out.println("applyYearMonth�� "+applyYearMonth); //
 	 * attdServiceFacade.modifyAnnualVacationMgtList(applyYearMonth); }
-	 * 
-	 * 
+	 *
+	 *
 	 * @RequestMapping("/attendance/cancelAnnualVacationMgtList.do") public void
 	 * cancelAnnualVacationMgtList(@RequestAttribute("inData") PlatformData inData,
-	 * 
+	 *
 	 * @RequestAttribute("outData") PlatformData outData) throws Exception {
-	 * 
+	 *
 	 * ArrayList<annualVacationMgtTO> annualVacationMgtList =
 	 * (ArrayList<annualVacationMgtTO>)datasetBeanMapper.datasetToBeans(inData,
 	 * annualVacationMgtTO.class);

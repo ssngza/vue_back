@@ -5,12 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import kr.co.seoulit.erp.hr.attendance.servicefacade.AttdServiceFacade;
 import kr.co.seoulit.erp.hr.attendance.to.DayAttdTO;
@@ -20,18 +15,18 @@ import kr.co.seoulit.erp.hr.attendance.to.DayAttdTO;
 //@RequestMapping(value = "/hr/*", produces = "application/json")
 @RequestMapping("/hr/attendance/*")
 public class DayAttdController {
-	
+
 	@Autowired
 	private AttdServiceFacade attdServiceFacade;
 
-	@RequestMapping(value = "/dayAttendance", method = RequestMethod.GET)
-	public HashMap<String, Object> findDayAttdList(@RequestParam("applyDay") String applyDay,
-			@RequestParam("empCode") String empCode) {
-		HashMap<String, Object> model = new HashMap<>();
-
+	@GetMapping(value = "/dayAttendance")
+	public HashMap<String, Object> findDayAttdList (
+			@RequestParam("applyDay") String applyDay,
+			@RequestParam("empCode") String empCode ) {
 		System.out.println(empCode);
 
-		model.put("DayAttdTO", attdServiceFacade.findDayAttdList(empCode, applyDay));
+		HashMap<String, Object> model = new HashMap<>();
+		model.put("DayAttendTO", attdServiceFacade.findDayAttdList(empCode, applyDay));
 		return model;
 	}
 

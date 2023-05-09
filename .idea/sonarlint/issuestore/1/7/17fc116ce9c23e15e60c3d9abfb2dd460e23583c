@@ -1,0 +1,13 @@
+
+z
+java:S1319/"dThe type of "rowData" should be an interface such as "Map" rather than the implementation "HashMap".(Ì†••
+c
+java:S4488"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(™ûÕ´üÿÿÿÿ
+M
+java:S1135 "2Complete the task associated to this TODO comment.(» æžÿÿÿÿÿ
+`
+java:S4488."JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(Ñ½¾š
+S	java:S1062"9Replace this use of System.out or System.err by a logger.(¡òöÊøÿÿÿÿ
+M
+java:S11350"2Complete the task associated to this TODO comment.(» æžÿÿÿÿÿ
+V	java:S125D"<This block of commented-out lines of code should be removed.(÷Ë’óûÿÿÿÿ
